@@ -1,0 +1,91 @@
+.RecommendationPage {
+  overflow: hidden;
+
+  .main-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 56px;
+    margin-left: 1%;
+    margin-top: 1%;
+    font-weight: bold;
+
+    a {
+      text-decoration: none;
+      &:visited {
+        color: black;
+      }
+      &:hover {
+        color: #00ff00;
+      }
+    }
+  }
+
+  .workplace {
+    background-color: #009000;
+    width: 300px;
+    font-size: 12px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: 15px;
+    padding: 6px 9px 6px 20px;
+    margin: 20px 12px 3px;
+  }
+
+  .budget {
+    background-color: #009000;
+    width: 300px;
+    font-size: 12px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: 15px;
+    padding: 6px 9px 6px 20px;
+    margin: 20px 12px 3px;
+  }
+
+  .commute {
+    background-color: #009000;
+    width: 300px;
+    font-size: 12px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: 15px;
+    padding: 6px 9px 6px 20px;
+    margin: 50px 12px 3px;
+  }
+
+  .lifestyle {
+    background-color: #009000;
+    width: 300px;
+    font-size: 12px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: 15px;
+    padding: 6px 9px 6px 20px;
+    margin: 50px 12px 3px;
+  }
+
+  .recommend {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #009000;
+    border-radius: 15px;
+    color: white;
+    padding: 6px 6px 6px 8px;
+    margin: 10px 12px 3px;
+    width: 80px;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
