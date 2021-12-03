@@ -1,0 +1,63 @@
+.Contents3 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  .d3 {
+    font-size: 22px;
+    font-weight: bold;
+    .number3 {
+      border-radius: 50%;
+      background-color: #b2e7b2;
+      width: 45px;
+      height: 45px;
+      padding-top: 8px;
+      padding-left: 3px;
+      padding-right: 3px;
+      text-align: center;
+      font-size: 40px;
+      color: #009000;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: normal;
+    }
+    .result3 {
+      padding-left: 8%;
+      border: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: normal;
+    }
+  }
+
+  .detailedContents {
+    padding-left: 8%;
+    padding-right: 8%;
+    .educontents {
+      background-color: #cbe4cb;
+      border-radius: 8px;
+      padding: 1%;
+    }
+    .medicontents {
+      background-color: #cbe4cb;
+      border-radius: 8px;
+      padding: 1%;
+    }
+    .facicontents {
+      background-color: #cbe4cb;
+      border-radius: 8px;
+      padding: 1%;
+    }
+    .welcontents {
+      background-color: #cbe4cb;
+      border-radius: 8px;
+      padding: 1%;
+    }
+    .shopcontents {
+      background-color: #cbe4cb;
+      border-radius: 8px;
+      padding: 1%;
+    }
+    .healthcontents {
+      background-color: #cbe4cb;
+      border-radius: 8px;
+      padding: 1%;
+    }
+  }
+}

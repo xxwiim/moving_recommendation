@@ -4,6 +4,7 @@ import './ResultPage.scss';
 import Location from './Location';
 import Details from './Details';
 import Evaluation from './Evaluation';
+import Social from './Social';
 
 const ResultPage = () => {
     return (
@@ -21,6 +22,7 @@ const ResultPage = () => {
             </div>
             <Location />
             <Details /><br/><br/>
+            <Social /><br/><br/><br/>
             <Evaluation/><br/><br/>
         </div>
     )
