@@ -6,8 +6,6 @@ import BudgetBar from './BudgetBar';
 import CommuteWay from './CommuteWay';
 import CommuteTimeBar from "./CommuteTimeBar";
 import LifeStyleBtn from './LifeStyleBtn';
-import LifeStyleDetail from './Education';
-
 
 const RecommendationPage = () => {
     return (
