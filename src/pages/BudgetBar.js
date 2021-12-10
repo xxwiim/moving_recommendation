@@ -28,7 +28,7 @@ function BudgetBar() {
             onChange={val =>setValue(val)} {...sliderProps}
             style={{width: '400px', margin: "2.5%"}}
             handleStyle={{backgroundColor: '#CCE9CC', border: '1', borderColor: '#62a562'}}
-            trackStyle={{backgroundColor: "#cce9cc"}}
+            trackStyle={{backgroundColor: "#CCE9CC"}}
             />
             {(console.log(value))}
         </div>
