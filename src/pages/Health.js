@@ -36,7 +36,7 @@ const Health = () => {
             onChange={(e) => {
                 changeHandler(e.currentTarget.checked, 'publicgym')
             }}
-            checked={checkedInputs.includes('pulicgym') ? true : false}
+            checked={checkedInputs.includes('publicgym') ? true : false}
             />체육관
             {console.log(checkedInputs)}
         </div>
