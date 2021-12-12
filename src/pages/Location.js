@@ -8,17 +8,34 @@ const Location=()=>{
     var container = document.getElementById('map');
     var options = {
       center: new kakao.maps.LatLng(37.5465770572176, 126.96458430932942),
-      level: 3
+      level: 10
     };
 
     var map = new kakao.maps.Map(container, options);
-    var markerPosition  = new kakao.maps.LatLng(37.5465770572176, 126.96458430932942); 
-    var marker = new kakao.maps.Marker({
-      position: markerPosition
-  });
-  marker.setMap(map);
 
-    }, [])
+    var positions = [
+      {
+        address: '서울특별시 강남구 자곡동',
+        latlng: new kakao.maps.LatLng(37.476796,127.100387)
+      },
+      {
+        address: '서울특별시 강동구 길동',
+        latlng: new kakao.maps.LatLng(37.539123,127.143163)
+      },
+      {
+        address: "서울특별시 강서구 마곡동",
+        latlng: new kakao.maps.LatLng(37.566092,126.830395)
+      }
+    ];
+
+    for (var i=0; i < positions.length; i++) {
+      var marker = new kakao.maps.Marker({
+        map: map,
+        position: positions[i].latlng,
+        title: positions[i].address,
+      })
+    }
+  }, [])
 
 
     return (

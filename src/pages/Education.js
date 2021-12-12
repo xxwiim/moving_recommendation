@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from'react';
 import './Education.scss';
+import axios from 'axios';
 
 const Education = () => {
     const [checkedInputs, setCheckedInputs] = useState([]);
@@ -11,6 +12,14 @@ const Education = () => {
             setCheckedInputs(checkedInputs.filter((el) => el !== id));
         }
     };
+
+    axios.post('http://localhost:4000',
+        {
+            educhecks: {checkedInputs}
+        }
+    )
+        .then((response) => { console.log(response.data);})
+        .catch((response) => { console.log('error!') });
 
     return (
         <div className="LifeStyleDetails">

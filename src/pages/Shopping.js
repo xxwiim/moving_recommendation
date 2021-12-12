@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from'react';
 import './Shopping.scss';
+import axios from 'axios';
 
 const Shopping = () => {
     const [checkedInputs, setCheckedInputs] = useState([]);
@@ -11,6 +12,14 @@ const Shopping = () => {
             setCheckedInputs(checkedInputs.filter((el) => el !== id));
         }
     };
+
+    axios.post('http://localhost:4000',
+        {
+            shopchecks: {checkedInputs}
+        }
+    )
+        .then((response) => { console.log(response.data);})
+        .catch((response) => { console.log('error!') });
 
     return (
         <div className="LifeStyleDetails">

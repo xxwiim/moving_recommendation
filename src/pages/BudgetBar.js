@@ -36,4 +36,3 @@ function BudgetBar() {
 };
 
 export default BudgetBar;
-

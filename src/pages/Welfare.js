@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from'react';
 import './Welfare.scss';
+import axios from 'axios';
 
 const Welfare = () => {
     const [checkedInputs, setCheckedInputs] = useState([]);
@@ -11,6 +12,14 @@ const Welfare = () => {
             setCheckedInputs(checkedInputs.filter((el) => el !== id));
         }
     };
+
+    axios.post('http://localhost:4000',
+        {
+            welfarechecks: {checkedInputs}
+        }
+    )
+        .then((response) => { console.log(response.data);})
+        .catch((response) => { console.log('error!') });
 
     return (
         <div className="LifeStyleDetails">
