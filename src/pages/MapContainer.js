@@ -19,6 +19,7 @@ const MapContainer=({ searchPlace })=>{
     geocoder.addressSearch(searchPlace, function(result, status) {
       if (status === kakao.maps.services.Status.OK) {
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        var locate = new kakao.maps.LatLng(result[0].x, result[0].y);
         var marker = new kakao.maps.Marker({
           map: map,
           position: coords
@@ -29,11 +30,11 @@ const MapContainer=({ searchPlace })=>{
         });
         infowindow.open(map, marker);
         map.setCenter(coords);
-      }{console.log(coords)}
+      }{console.log(locate)}
 
       axios.post('http://localhost:4000',
         {
-            location: {coords}
+            location: {locate}
         }
       )
         .then((response) => { console.log(response.data);})
