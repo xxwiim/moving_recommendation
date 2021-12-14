@@ -12,7 +12,26 @@ const Location=()=>{
     };
 
     var map = new kakao.maps.Map(container, options);
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+    var imageSize = new kakao.maps.Size(24, 35);    
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
 
+    //직장 임시 좌표값
+    var workPosition = new kakao.maps.LatLng(37.5465770572176, 126.96458430932942); 
+    var workMarker = new kakao.maps.Marker({
+      position: workPosition,
+      image : markerImage,
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="width: 150px;text-align:center;padding:1px;fontSize: 10px;">나의 직장</div>'
+    });
+    infowindow.open(map, workMarker);
+    map.setCenter(workPosition);
+
+    workMarker.setMap(map);
+  
+
+    //추천 결과 장소 임시 좌표값
     var positions = [
       {
         address: '서울특별시 강남구 자곡동',
