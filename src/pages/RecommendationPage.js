@@ -11,7 +11,7 @@ const RecommendationPage = () => {
     return (
         <div className='RecommendationPage'>
             <div className="main-title">
-                <Link to='/main'>
+                <Link to='/'>
                     Ubrs
                 </Link>
             </div>
@@ -34,7 +34,7 @@ const RecommendationPage = () => {
             </div>
             <LifeStyleBtn />
             <div className="recommend" style={{marginLeft: "68%"}}>
-                <Link to='./result'>
+                <Link to='/result'>
                 추천받기
                 </Link>
             </div><br/>

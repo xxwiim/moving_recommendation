@@ -10,13 +10,13 @@ const ResultPage = () => {
     return (
         <div className="ResultPage">
             <div className="main-title">
-                <Link to='/main'>
+                <Link to='/'>
                     Ubrs
                 </Link>
             </div>
             <hr />
             <div className="back">
-                <Link to='./recommendation'>
+                <Link to='/recommendation'>
                     ← 다시 설정
                 </Link>
             </div>

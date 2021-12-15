@@ -7,7 +7,7 @@ import ResultPage from './pages/ResultPage';
 const App = () => {
   return (
     <>
-      <Route component={MainPage} path="/main" />
+      <Route component={MainPage} path exact="/" />
       <Route component={RecommendationPage} path="/recommendation" />
       <Route component={ResultPage} path="/result" />
     </>

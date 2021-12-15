@@ -6,7 +6,7 @@ const MainPage = () => {
     return (
         <div className="MainPage">
             <div className="main-title">
-                <Link to='/main'>
+                <Link to='/'>
                     Ubrs
                 </Link>
             </div>
