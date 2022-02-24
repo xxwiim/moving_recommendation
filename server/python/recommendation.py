@@ -6,59 +6,144 @@ import pandas as pd
 from sklearn import preprocessing
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.metrics.pairwise import cosine_similarity
-import time
+import requests
 import json
 import os
-import ssl
-import urllib.request
+import time
+
 
 
 def transit_api(address, transit, origin_list): #
     destination = address
-    mode = 'transit'
-    transit_mode =transit[0]
+    #mode = 'transit'
+    transit_mode = transit[0]
     limit_time = transit[1]
     
     filtered_idx = {}
     idx_content={}
-
-
-    #if (__name__ == "__main__"):
-        #client = None
-    with open("C:\proj\server\python\google_key.json","r") as clientJson :
-        client = json.load(clientJson)
-        
-        #print(origin_list)
+    
 
     for origin in origin_list:
         if len(filtered_idx) < 3:
 
-            departure_time  = "1640818800" #2021 12 30 AM8:00 TIMESTAMP
-            key             = client['key']
+            departure_time  = 1648767600 #2022 04 01 am8 timestamp
+            params = {
+              "origin" : origin,
+              "destination" : address,
+              "mode" : "transit",
+              "transit_mode" : transit_mode,
+              "departure_time" : departure_time,
+              "language":"ko",
+              "key": key['google']
+          }
+
+
+            url = "https://maps.googleapis.com/maps/api/directions/json?"
            
+            response = requests.post(url, params=params)
+            content = response.json()
 
-            url = "https://maps.googleapis.com/maps/api/directions/json?origin="+ origin + "&destination=" + destination + "&mode=" + mode+ "&transit_mode="+ transit_mode + "&departure_time=" + departure_time + "&language=ko"+ "&key=" + key
+            path = content["routes"][0]["legs"][0]
+            duration_sec = path["duration"]["value"]
 
-            request         = urllib.request.Request(url)
-            context         = ssl._create_unverified_context()
-            response        = urllib.request.urlopen(request, context=context)
-            responseText    = response.read().decode('utf-8')
-            content    = json.loads(responseText)
-            #print(content)
-            path   = content["routes"][0]["legs"][0]
-            duration_sec  = path["duration"]["value"]
-            #print(duration_sec)
             if duration_sec <= (limit_time*60):
                 filtered_idx[origin] = duration_sec
                 
                 idx_content[len(filtered_idx)] = content
-                #with open("./result2.json","w") as json_file:
-                   # json.dump(idx_content, json_file, indent=4)
                     
-    return filtered_idx 
+    return filtered_idx
+
+
+def walking_driving(address, transit, origin_list):
+    endAddr = address.split(',')
+    endX = endAddr[1]
+    endY = endAddr[0]
+
+    transit_mode = transit[0]
+    limit_time = transit[1]
+
+    filtered_idx = {}
+    idx_content={}
+
+    if (transit_mode == 'walking'):
+
+        for origin in origin_list:
+            if len(filtered_idx) < 3:
+                startAddr = origin.split(',')
+                startX = startAddr[1]
+                startY = startAddr[0]
+
+                params = { 
+                    "startX":startX,
+                    "startY":startY,
+                    "endX":endX,
+                    "endY":endY,
+                    "startName":"출발지",
+                    "endName":"도착지"
+                    }
+
+
+
+                url = 'https://apis.openapi.sk.com/tmap/routes/pedestrian?appKey='+key['tmap']+'&version=1&startX='+startX+'&startY='+startY+'&endX='+endX+'&endY='+endY+'&startName=출발지&endName=도착지'
+                response = requests.post(url)
+                content_1 = response.json()
+                
+
+                try:
+                    totalTime = content_1['features'][0]['properties']['totalTime']
+                except:
+                    time.sleep(1)
+                    response = requests.post(url)
+                    content_1 = response.json()
+                    totalTime = content_1['features'][0]['properties']['totalTime']
+
+                    if totalTime <= (limit_time*60):
+                        filtered_idx[origin] = totalTime
+                                
+                        idx_content[len(filtered_idx)] = content
+                
+        return filtered_idx
+
+
+    else: #driving
+
+        for origin in origin_list:
+            if(len(filtered_idx)) < 3:
+                startAddr = origin.split(',')
+                startX = startAddr[1]
+                startY = startAddr[0]
+                url = 'https://apis.openapi.sk.com/tmap/routes/prediction?appKey='+key['tmap']+'&version=1'
+
+                values = { 
+                    "routesInfo": {
+                        "departure": {
+                            "name": "출발지",
+                            "lon": startX,
+                            "lat": startY
+                            },
+                        "destination": {
+                            "name": "도착지",
+                            "lon": endX,
+                            "lat": endY
+                            },
+                            "predictionType": "arrival",
+                            "predictionTime": "2022-04-01T08:00:00+0900"
+                            }
+                        }
+
+                response = requests.post(url, data=json.dumps(values))
+                content= response.json()
+           
+                totalTime = content['features'][0]['properties']['totalTime']
+                if totalTime <= (limit_time*60):
+                    filtered_idx[origin] = totalTime
+                        
+                    idx_content[len(filtered_idx)] = content
+                
+        return filtered_idx
 
 def recommend(address, price, transit, option): 
-    df = pd.read_csv('C:/proj/server/python/train_all.csv')
+    df = pd.read_csv('./python/train_all.csv')
     col = ['address']
     options = option
     for i in range(len(options)):
@@ -123,7 +208,9 @@ def recommend(address, price, transit, option):
     
     origin_list = price_data['좌표'].tolist()
     #print(origin_list)
-    filtered_idx = transit_api(address, transit, origin_list)
+    if (transit[0] == 'driving')|(transit[0] == 'walking'):
+        filtered_idx = walking_driving(address, transit, origin_list)
+    else: filtered_idx = transit_api(address, transit, origin_list)
     #print(filtered_idx)
     
     comp = comp.to_frame()
@@ -145,8 +232,9 @@ def recommend(address, price, transit, option):
     #print(comp)
     #print(result)
     return result
-    
+
 if __name__ == '__main__':
+    
     sys.stdout= io.TextIOWrapper(sys.stdout.detach(),encoding='utf-8')
     sys.stderr= io.TextIOWrapper(sys.stderr.detach(),encoding='utf-8')
     args1 = sys.argv[1] #address
@@ -172,8 +260,12 @@ if __name__ == '__main__':
     transit = [args4, args5]
   
   
-  #주소, [가격], [모드, 시간], 옵션
+    global key
+    path = os.getcwd()
+    with open(path+"\python\key.json","r") as keyJson : #api 인증키 가져오기
+        key = json.load(keyJson)
+
+    #주소, [가격], [모드, 시간], 옵션
     result = recommend(args1, price, transit,args6)
     #result = recommend("37.546475,126.964692",[0,3000000000],["bus", 60],["공원","영화관"]
     print(result)
-    
