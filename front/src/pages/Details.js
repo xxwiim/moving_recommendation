@@ -9,12 +9,12 @@ import Popup from './Popup';
 import Contents1 from './Contents1';
 import Contents2 from './Contents2';
 import Contents3 from './Contents3';
+import Evaluation from './Evaluation';
 import API from '../API';
 import Loading from './Loading';
 
 const Details = ({ getResult, loadChecked }) => {
   const [loading, setLoading] = useState(true);
-
   const [result, setResult] = useState('로딩중');
 
   useEffect(() => {
@@ -121,8 +121,12 @@ const Details = ({ getResult, loadChecked }) => {
           )}
           <br />
         </div>
+        <br/>
       </div>
-      <br />
+      <div className='eval1'>
+            <Evaluation />
+      </div>
+      <br/>
       <div className="d2">
         <div className="number2" style={{ display: 'inline-block' }}>
           b
@@ -152,6 +156,10 @@ const Details = ({ getResult, loadChecked }) => {
         </div>
       </div>
       <br />
+      <div className='eval2'>
+            <Evaluation />
+      </div>
+      <br/>
       <div className="d3">
         <div className="number3" style={{ display: 'inline-block' }}>
           c
@@ -180,6 +188,11 @@ const Details = ({ getResult, loadChecked }) => {
           <br />
         </div>
       </div>
+      <br/>
+      <div className='eval2'>
+            <Evaluation />
+      </div>
+      <br/>
     </div>
   );
 };

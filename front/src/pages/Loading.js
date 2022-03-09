@@ -6,7 +6,7 @@ function Loading() {
   return (
     <div className="load">
       <SpinContainer>
-        <Loader type="circles" color="green" height={30} width={30} />
+        <Loader type="Oval" color="green" height={30} width={30} />
       </SpinContainer>
     </div>
   );

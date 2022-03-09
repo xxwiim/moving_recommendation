@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './ResultPage.scss';
 import Location from './Location';
 import Details from './Details';
-import Evaluation from './Evaluation';
 import Social from './Social';
 import API from '../API';
 import { useSelector } from 'react-redux';
@@ -32,9 +31,8 @@ const ResultPage = ({ getResult, loadChecked }) => {
       <br />
       <br />
       <br />
-      <Evaluation />
-      <br />
-      <br />
+      <br/>
+      <br/>
     </div>
   );
 };
