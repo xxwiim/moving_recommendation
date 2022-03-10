@@ -20,7 +20,7 @@ const Facility = ({ facChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails">
+    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
         id={'영화관'}
         type="checkbox"
@@ -41,28 +41,6 @@ const Facility = ({ facChecked }) => {
         checked={checkedInputs.includes('카페') ? true : false}
       />
       카페
-      <br />
-      <br />
-      <input
-        id={'공원'}
-        type="checkbox"
-        onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '공원');
-        }}
-        checked={checkedInputs.includes('공원') ? true : false}
-      />
-      공원
-      <br />
-      <br />
-      <input
-        id={'놀이터'}
-        type="checkbox"
-        onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '놀이터');
-        }}
-        checked={checkedInputs.includes('놀이터') ? true : false}
-      />
-      놀이터
       <br />
       <br />
       <input

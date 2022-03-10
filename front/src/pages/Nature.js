@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { hosChecked } from '../redux/checked/actions'; //action
-import './Medical.scss';
+import { natureChecked } from '../redux/checked/actions'; //action
 
-const Medical = ({ hosChecked }) => {
+const Nature = ({ natureChecked }) => {
   const [checkedInputs, setCheckedInputs] = useState([]);
 
   useEffect(() => {
-    console.log('health: ', checkedInputs);
-    hosChecked(checkedInputs);
+    console.log('nature: ', checkedInputs);
+    natureChecked(checkedInputs);
   }, [checkedInputs, setCheckedInputs]);
 
   const changeHandler = (checked, id) => {
@@ -22,36 +21,36 @@ const Medical = ({ hosChecked }) => {
   return (
     <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
-        id={'병의원 및 약국'}
+        id={'등산로'}
         type="checkbox"
         onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '병의원 및 약국');
+          changeHandler(e.currentTarget.checked, '등산로');
         }}
-        checked={checkedInputs.includes('병의원 및 약국') ? true : false}
+        checked={checkedInputs.includes('등산로') ? true : false}
       />
-      병의원 및 약국
+      등산로
       <br />
       <br />
       <input
-        id={'보건소'}
+        id={'산책로'}
         type="checkbox"
         onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '보건소');
+          changeHandler(e.currentTarget.checked, '산책로');
         }}
-        checked={checkedInputs.includes('보건소') ? true : false}
+        checked={checkedInputs.includes('산책로') ? true : false}
       />
-      보건소
+      산책로
       <br />
       <br />
       <input
-        id={'응급의료기관시설'}
+        id={'미세먼지'}
         type="checkbox"
         onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '응급의료기관시설');
+          changeHandler(e.currentTarget.checked, '미세먼지');
         }}
-        checked={checkedInputs.includes('응급의료기관시설') ? true : false}
+        checked={checkedInputs.includes('미세먼지') ? true : false}
       />
-      응급의료기관시설
+      미세먼지
       {console.log(checkedInputs)}
     </div>
   );
@@ -64,6 +63,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  hosChecked: (checkedInputs) => hosChecked(checkedInputs),
+  natureChecked: (checkedInputs) => natureChecked(checkedInputs),
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Medical);
+export default connect(mapStateToProps, mapDispatchToProps)(Nature);

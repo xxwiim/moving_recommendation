@@ -20,7 +20,7 @@ const Shopping = ({ shopChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails">
+    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
         id={'백화점'}
         type="checkbox"

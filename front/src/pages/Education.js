@@ -20,18 +20,7 @@ const Education = ({ eduChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails">
-      <input
-        id={'유치원'}
-        type="checkbox"
-        onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '유치원');
-        }}
-        checked={checkedInputs.includes('유치원') ? true : false}
-      />
-      유치원
-      <br />
-      <br />
+    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
         id={'초등학교'}
         type="checkbox"

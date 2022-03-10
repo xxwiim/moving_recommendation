@@ -19,18 +19,7 @@ const Welfare = ({ welChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails">
-      <input
-        id={'어린이집'}
-        type="checkbox"
-        onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '어린이집');
-        }}
-        checked={checkedInputs.includes('어린이집') ? true : false}
-      />
-      어린이집
-      <br />
-      <br />
+    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
         id={'경로당'}
         type="checkbox"

@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
 import './LifeStyleBtn.scss';
 import Education from './Education';
+import Children from './Children';
 import Medical from './Medical';
 import Facility from './Facility';
 import Welfare from './Welfare';
 import Shopping from './Shopping';
 import Health from './Health';
+import Nature from './Nature';
+import Secure from './Secure';
 import {
   MdSchool,
+  MdOutlineBabyChangingStation,
   MdOutlineLocalHospital,
   MdOutlineLocalLibrary,
   MdFavorite,
   MdShoppingCart,
   MdOutlineAccessibilityNew,
+  MdNaturePeople,
+  MdFrontHand,
 } from 'react-icons/md';
 
 const LifeStyleBtn = (props) => {
   const [eduView, setEduView] = useState(false);
+  const [childrenView, setChildrenView] = useState(false);
   const [mediView, setMediView] = useState(false);
   const [faciView, setFaciView] = useState(false);
   const [welView, setWelView] = useState(false);
   const [shopView, setShopView] = useState(false);
   const [healthView, setHealthView] = useState(false);
+  const [natureView, setNatureView] = useState(false);
+  const [secureView, setSecureView] = useState(false);
 
   return (
     <div className="Buttons">
@@ -31,6 +40,13 @@ const LifeStyleBtn = (props) => {
           &nbsp;교육시설
         </button>
         {eduView ? <Education /> : null}
+      </div>
+      <div className='children'>
+        <button id="baby" type="button" onClick={() => setChildrenView(true)}>
+          <MdOutlineBabyChangingStation color="#009000" size="20" />
+          &nbsp;어린이시설
+        </button>
+        {childrenView ? <Children /> : null}
       </div>
       <div className="medi">
         <button id="hospital" type="button" onClick={() => setMediView(true)}>
@@ -49,7 +65,7 @@ const LifeStyleBtn = (props) => {
       <div className="welfare">
         <button id="welfare" type="button" onClick={() => setWelView(true)}>
           <MdFavorite color="#009000" size="20" />
-          &nbsp;복지시설
+          &nbsp;노인복지시설
         </button>
         {welView ? <Welfare /> : null}
       </div>
@@ -63,9 +79,23 @@ const LifeStyleBtn = (props) => {
       <div className="health">
         <button id="health" type="button" onClick={() => setHealthView(true)}>
           <MdOutlineAccessibilityNew color="#009000" size="20" />
-          &nbsp;체육시설
+          &nbsp;체육 및 공원시설
         </button>
         {healthView ? <Health /> : null}
+      </div>
+      <div className='nature'>
+        <button id="nature" type="button" onClick={() => setNatureView(true)}>
+          <MdNaturePeople color="#009000" size="20" />
+          &nbsp;자연/환경
+        </button>
+        {natureView ? <Nature /> : null}  
+      </div>
+      <div className='secure'>
+        <button id="secure" type="button" onClick={() => setSecureView(true)}>
+          <MdFrontHand color="#009000" size="20" />
+          &nbsp;안전
+        </button>
+        {secureView ? <Secure /> : null}  
       </div>
     </div>
   );

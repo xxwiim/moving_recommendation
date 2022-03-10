@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { hosChecked } from '../redux/checked/actions'; //action
-import './Medical.scss';
+import { secureChecked } from '../redux/checked/actions'; //action
 
-const Medical = ({ hosChecked }) => {
+const Secure = ({ secureChecked }) => {
   const [checkedInputs, setCheckedInputs] = useState([]);
 
   useEffect(() => {
-    console.log('health: ', checkedInputs);
-    hosChecked(checkedInputs);
+    console.log('secure: ', checkedInputs);
+    secureChecked(checkedInputs);
   }, [checkedInputs, setCheckedInputs]);
 
   const changeHandler = (checked, id) => {
@@ -22,36 +21,36 @@ const Medical = ({ hosChecked }) => {
   return (
     <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
-        id={'병의원 및 약국'}
+        id={'범죄안전등급'}
         type="checkbox"
         onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '병의원 및 약국');
+          changeHandler(e.currentTarget.checked, '범죄안전등급');
         }}
-        checked={checkedInputs.includes('병의원 및 약국') ? true : false}
+        checked={checkedInputs.includes('범죄안전등급') ? true : false}
       />
-      병의원 및 약국
+      범죄안전등급
       <br />
       <br />
       <input
-        id={'보건소'}
+        id={'경찰관서'}
         type="checkbox"
         onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '보건소');
+          changeHandler(e.currentTarget.checked, '경찰관서');
         }}
-        checked={checkedInputs.includes('보건소') ? true : false}
+        checked={checkedInputs.includes('경찰관서') ? true : false}
       />
-      보건소
+      경찰관서
       <br />
       <br />
       <input
-        id={'응급의료기관시설'}
+        id={'여성안심지킴이집'}
         type="checkbox"
         onChange={(e) => {
-          changeHandler(e.currentTarget.checked, '응급의료기관시설');
+          changeHandler(e.currentTarget.checked, '여성안심지킴이집');
         }}
-        checked={checkedInputs.includes('응급의료기관시설') ? true : false}
+        checked={checkedInputs.includes('여성안심지킴이집') ? true : false}
       />
-      응급의료기관시설
+      여성안심지킴이집
       {console.log(checkedInputs)}
     </div>
   );
@@ -64,6 +63,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  hosChecked: (checkedInputs) => hosChecked(checkedInputs),
+  secureChecked: (checkedInputs) => secureChecked(checkedInputs),
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Medical);
+export default connect(mapStateToProps, mapDispatchToProps)(Secure);

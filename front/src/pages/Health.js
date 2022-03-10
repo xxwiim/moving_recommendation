@@ -20,7 +20,7 @@ const Health = ({ healChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails">
+    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
       <input
         id={'헬스장'}
         type="checkbox"
@@ -52,6 +52,18 @@ const Health = ({ healChecked }) => {
         checked={checkedInputs.includes('체육관') ? true : false}
       />
       체육관
+      {console.log(checkedInputs)}
+      <br />
+      <br />
+      <input
+        id={'공원'}
+        type="checkbox"
+        onChange={(e) => {
+          changeHandler(e.currentTarget.checked, '공원');
+        }}
+        checked={checkedInputs.includes('공원') ? true : false}
+      />
+      공원
       {console.log(checkedInputs)}
     </div>
   );

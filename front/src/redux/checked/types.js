@@ -1,6 +1,9 @@
 export const EDU_CHECKED = 'EDU_CHECKED';
+export const CHILDREN_CHECKED = 'CHILDREN_CHECKED';
 export const HOS_CHECKED = 'HOS_CHECKED';
 export const FAC_CHECKED = 'FAC_CHECKED';
 export const WEL_CHECKED = 'WEL_CHECKED';
 export const SHOP_CHECKED = 'SHOP_CHECKED';
 export const HEAL_CHECKED = 'HEAL_CHECKED';
+export const NATURE_CHECKED = 'NATURE_CHECKED';
+export const SECURE_CHECKED = 'SECURE_CHECKED';

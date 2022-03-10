@@ -1,0 +1,16 @@
+.LifeStyleDetails {
+  border: 2px solid #009000;
+  width: 110px;
+  padding: 30px;
+  border-radius: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  .checkbox {
+    &.checked {
+      svg {
+        color: #009000;
+      }
+    }
+  }
+}
