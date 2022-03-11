@@ -49,11 +49,14 @@ const Details = ({ getResult, loadChecked }) => {
       limit: time['time'],
       option: [
         checked.edu,
+        checked.children,
         checked.hos,
         checked.fac,
         checked.wel,
         checked.shop,
         checked.heal,
+        checked.nature,
+        checked.secure
       ].flat(),
     })
       .then(function (res) {

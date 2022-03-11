@@ -96,7 +96,7 @@ const PopupInner = styled.div`
   border-radius: 10px;
   width: 960px;
   max-width: 1000px;
-  top: 80%;
+  top: 100%;
   transform: translateY(-50%);
   margin: 0 auto;
   padding: 40px 20px;

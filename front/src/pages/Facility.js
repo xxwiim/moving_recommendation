@@ -49,7 +49,7 @@ const Facility = ({ facChecked }) => {
         onChange={(e) => {
           changeHandler(e.currentTarget.checked, '도서관');
         }}
-        checked={checkedInputs.includes('l도서관') ? true : false}
+        checked={checkedInputs.includes('도서관') ? true : false}
       />
       도서관
       {console.log(checkedInputs)}
