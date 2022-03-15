@@ -309,11 +309,7 @@ if __name__ == '__main__':
     with open(path+"\python\key.json","r") as keyJson :
         key = json.load(keyJson)
     
-    #global key
-    #key={
-    #  "tmap": "l7xx88d4c088eabb4892a49f0694cb9ed88d",
-    #  "google": "AIzaSyBTx8UVGjLy3BIALI-jmTLHuordvqB5f2o"}
-
+   
     
     #주소, [가격], [모드, 시간], 옵션
     try:
