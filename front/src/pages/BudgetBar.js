@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { getPrice } from '../redux/price/actions';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import useSessionStorage from '../useSessionStorage';
 
 import API from '../API';
 function BudgetBar({ getPrice }) {
-  const [price, setPrice] = useState(0);
+  //const [price, setPrice] = useState(0)
 
+  const [price, setPrice] = useSessionStorage('price', 0);
   useEffect(() => {
     console.log('price: ', price);
     getPrice(price);

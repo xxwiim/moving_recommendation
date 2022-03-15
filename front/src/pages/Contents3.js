@@ -34,9 +34,26 @@ const Contents3 = (props) => {
         </div>
         &nbsp;&nbsp;&nbsp;{props.result3[0]}
         <div className="result3">
-          • 2021년 공동주택 기준 평균 가격 {Math.round(props.result3[1])}원
-          <br />• {props.result3[2]}
-          <br />• {props.result3[4]} {Math.round(props.result3[3])}분
+          • <span className="bold3">2021년 공동주택 기준 평균 가격</span>
+          {'  '}
+          {props.result3[1]}원
+          <br />•{' '}
+          {props.result3[2].map((result1) => (
+            <span>
+              <span className="bold3">{result1[0]}</span> :{' '}
+              <span className="number"> {result1[1]} </span>
+              {result1[0] == '범죄안전등급' ? (
+                <span>등급</span>
+              ) : result1[0] == '미세먼지' ? (
+                <span>㎍/m³</span>
+              ) : (
+                <span>개</span>
+              )}{' '}
+            </span>
+          ))}
+          <br />• <span className="bold3">{props.result3[4]}</span>
+          {'  '}
+          {Math.round(props.result3[3])}분
           <br />
         </div>
       </div>
@@ -45,25 +62,28 @@ const Contents3 = (props) => {
           <MdSchool size="20" color="#009000" />
           &nbsp;교육시설
           <div className="educontents">
-            학원 {DBresult3['학원']}개 초등학교 {DBresult3['초등학교']}개 중학교
-            {DBresult3['중학교']}개 고등학교
-            {DBresult3['고등학교']}개가 있습니다.
+            학원 {DBresult3['학원']}개 초등학교 {DBresult3['초등학교']}개 중학교{' '}
+            {DBresult3['중학교']}개 고등학교 {DBresult3['고등학교']}개가
+            있습니다.
           </div>
         </div>
         <br />
-        <div className='children'>
-          <MdOutlineBabyChangingStation size='20' color="#009000" />
+        <div className="children">
+          <MdOutlineBabyChangingStation size="20" color="#009000" />
           &nbsp;어린이시설
-          <div className='childrencontents'>
-            유치원 및 어린이집 {DBresult3['유치원 및 어린이집']}개 놀이터 {DBresult3['놀이터']}개가 있습니다.
+          <div className="childrencontents">
+            유치원 및 어린이집 {DBresult3['유치원 및 어린이집']}개 놀이터{' '}
+            {DBresult3['놀이터']}개가 있습니다.
           </div>
         </div>
-        <br/>
+        <br />
         <div className="medi">
           <MdOutlineLocalHospital size="20" color="#009000" />
           &nbsp;의료시설
           <div className="medicontents">
-            병의원 및 약국 {DBresult3['병의원 및 약국']}개 보건소 {DBresult3['보건소']}개 응급의료기관시설 {DBresult3['응급의료기관시설']}개가 있습니다.
+            병의원 및 약국 {DBresult3['병의원 및 약국']}개 보건소{' '}
+            {DBresult3['보건소']}개 응급의료기관시설{' '}
+            {DBresult3['응급의료기관시설']}개가 있습니다.
           </div>
         </div>
         <br />
@@ -80,8 +100,8 @@ const Contents3 = (props) => {
           <MdFavorite size="20" color="#009000" />
           &nbsp;노인복지시설
           <div className="welcontents">
-            경로당 {DBresult3['경로당']}개
-            사회복지관 {DBresult3['사회복지관']}개가 있습니다.
+            경로당 {DBresult3['경로당']}개 사회복지관 {DBresult3['사회복지관']}
+            개가 있습니다.
           </div>
         </div>
         <br />
@@ -100,24 +120,27 @@ const Contents3 = (props) => {
           &nbsp;체육 및 공원시설
           <div className="healthcontents">
             헬스장 {DBresult3['헬스장']}개 수영장 {DBresult3['수영장']}개 체육관{' '}
-            {DBresult3['체육관']}개 공원 {DBresult3['공원']}가 있습니다.
+            {DBresult3['체육관']}개 공원 {DBresult3['공원']}개가 있습니다.
           </div>
         </div>
         <br />
-        <div className='nature'>
+        <div className="nature">
           <MdNaturePeople size="20" color="#009000" />
           &nbsp;자연/환경
-          <div className='naturecontents'>
-            등산로 {DBresult3['등산로']}개 산책로 {DBresult3['산책로']}개 미세먼지 {DBresult3['미세먼지']}㎍/m³가 있습니다.
+          <div className="naturecontents">
+            등산로 {DBresult3['등산로']}개 산책로 {DBresult3['산책로']}개
+            미세먼지 {DBresult3['미세먼지']}㎍/m³가 있습니다.
           </div>
         </div>
-        <br/>
-        <div className='secure'>
+        <br />
+        <div className="secure">
           <MdFrontHand size="20" color="#009000" />
           &nbsp;안전
-          <div className='securecontents'>
-            범죄안전등급 {DBresult3['범죄안전등급']}등급 경찰관서 {DBresult3['경찰관서']}개 여성안심지킴이집 {DBresult3['여성안심지킴이집']}개가 있습니다.
-          </div>  
+          <div className="securecontents">
+            범죄안전등급 {DBresult3['범죄안전등급']}등급 경찰관서{' '}
+            {DBresult3['경찰관서']}개 여성안심지킴이집{' '}
+            {DBresult3['여성안심지킴이집']}개가 있습니다.
+          </div>
         </div>
       </div>
     </div>

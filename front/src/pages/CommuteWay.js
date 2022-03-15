@@ -8,12 +8,15 @@ import {
   MdDirectionsCar,
 } from 'react-icons/md';
 import './CommuteWay.scss';
+import useSessionStorage from '../useSessionStorage';
 
 const CommuteWay = (props) => {
-  const [checked, setChecked] = useState('');
+  //const [checked, setChecked] = useState('');
   const handleClick = (radioBtnName) => {
     setChecked(radioBtnName);
   };
+
+  const [checked, setChecked] = useSessionStorage('transit', '');
 
   useEffect(() => {
     console.log('transit: ', checked);

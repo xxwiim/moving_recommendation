@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdShare } from 'react-icons/md';
 import SocialPopup from './SocialPopup';
 import SocialContent from './SocialContent';
+import API from '../API';
 
 const Social = () => {
+  /* useEffect(()=>{
+    API.get("/:userID/:requestTime/",{
+
+    })
+  })*/
   const [showPopup, setshowPopup] = useState(false);
   const togglePopup = () => {
     setshowPopup(true);

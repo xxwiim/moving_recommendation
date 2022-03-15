@@ -6,7 +6,16 @@ import priceReducer from './price/reducers';
 import resultReducer from './result/reducers';
 import timeReducer from './time/reducers';
 import transitReducer from './transit/reducers';
+import alladdressReducer from './alladdress/reducers';
 
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage/session';
+
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  whitelist: ['check', 'location', 'price', 'transit', 'time', 'result'],
+};
 const rootReducer = combineReducers({
   checked: checkedReducer,
   location: locationReducer,
@@ -15,6 +24,7 @@ const rootReducer = combineReducers({
   time: timeReducer,
   result: resultReducer,
   load: loadReducer,
+  alladdress: alladdressReducer,
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

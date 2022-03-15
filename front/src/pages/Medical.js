@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { hosChecked } from '../redux/checked/actions'; //action
 import './Medical.scss';
-
+import useSessionStorage from '../useSessionStorage';
 const Medical = ({ hosChecked }) => {
-  const [checkedInputs, setCheckedInputs] = useState([]);
-
+  //const [checkedInputs, setCheckedInputs] = useState([]);
+  const [checkedInputs, setCheckedInputs] = useSessionStorage(
+    'medicheckedInputs',
+    [],
+  );
   useEffect(() => {
     console.log('health: ', checkedInputs);
     hosChecked(checkedInputs);
@@ -20,7 +23,7 @@ const Medical = ({ hosChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
+    <div className="LifeStyleDetails" style={{ fontSize: '10px' }}>
       <input
         id={'병의원 및 약국'}
         type="checkbox"

@@ -67,7 +67,7 @@
     margin: 50px 12px 3px;
   }
 
-  .recommend {
+  .recommendbt {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     background-color: #009000;
@@ -77,15 +77,14 @@
     margin: 10px 12px 3px;
     width: 80px;
     text-align: center;
-
-    a {
-      text-decoration: none;
-      &:visited {
-        color: white;
-      }
-      &:hover {
-        color: white;
-      }
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+    &:hover {
+      background-color: rgba(0, 144, 0, 0.788);
+    }
+    &:visited {
+      background-color: rgba(0, 144, 0, 0.788);
     }
   }
 }

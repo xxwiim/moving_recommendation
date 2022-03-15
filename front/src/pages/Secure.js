@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { secureChecked } from '../redux/checked/actions'; //action
-
+import useSessionStorage from '../useSessionStorage';
 const Secure = ({ secureChecked }) => {
-  const [checkedInputs, setCheckedInputs] = useState([]);
-
+  //const [checkedInputs, setCheckedInputs] = useState([]);
+  const [checkedInputs, setCheckedInputs] = useSessionStorage(
+    'securecheckedInputs',
+    [],
+  );
   useEffect(() => {
     console.log('secure: ', checkedInputs);
     secureChecked(checkedInputs);
@@ -19,7 +22,7 @@ const Secure = ({ secureChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
+    <div className="LifeStyleDetails" style={{ fontSize: '10px' }}>
       <input
         id={'범죄안전등급'}
         type="checkbox"

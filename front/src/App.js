@@ -4,6 +4,8 @@ import MainPage from './pages/MainPage';
 import RecommendationPage from './pages/RecommendationPage';
 import ResultPage from './pages/ResultPage';
 import ErrorPage from './pages/ErrorPage';
+import SharePage from './pages/SharePage';
+import DetailsforShare from './pages/DetailsforShare';
 
 const App = () => {
   return (
@@ -11,7 +13,8 @@ const App = () => {
       <Route component={MainPage} path exact="/" />
       <Route component={RecommendationPage} path="/recommendation" />
       <Route component={ResultPage} path="/result" />
-      <Route component={ErrorPage} path='/error' />
+      <Route component={SharePage} path="/share" />
+      <Route component={ErrorPage} path="/error" />
     </>
   );
 };

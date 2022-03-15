@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Children.scss';
 import { connect } from 'react-redux';
 import { childrenChecked } from '../redux/checked/actions'; //action
-
+import useSessionStorage from '../useSessionStorage';
 const Children = ({ childrenChecked }) => {
-  const [checkedInputs, setCheckedInputs] = useState([]);
+  //const [checkedInputs, setCheckedInputs] = useState([]);
+  const [checkedInputs, setCheckedInputs] = useSessionStorage(
+    'childcheckedInputs',
+    [],
+  );
 
   useEffect(() => {
     console.log('child: ', checkedInputs);
@@ -20,7 +24,7 @@ const Children = ({ childrenChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
+    <div className="LifeStyleDetails" style={{ fontSize: '10px' }}>
       <input
         id={'유치원 및 어린이집'}
         type="checkbox"
@@ -47,13 +51,13 @@ const Children = ({ childrenChecked }) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state, 'state');
-    return {
-      checked: state.checked.checked,
-    };
+  console.log(state, 'state');
+  return {
+    checked: state.checked.checked,
   };
-  
+};
+
 const mapDispatchToProps = {
-    childrenChecked: (checkedInputs) => childrenChecked(checkedInputs),
+  childrenChecked: (checkedInputs) => childrenChecked(checkedInputs),
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Children);

@@ -23,12 +23,17 @@
       border: 0;
       font-family: Arial, Helvetica, sans-serif;
       font-weight: normal;
+
+      .bold3 {
+        background-color: #cbe4cb;
+      }
     }
   }
 
   .detailedContents {
     padding-left: 8%;
     padding-right: 8%;
+
     .educontents {
       background-color: #cbe4cb;
       border-radius: 8px;

@@ -4,10 +4,11 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getTime } from '../redux/time/actions';
 import 'rc-slider/assets/index.css';
+import useSessionStorage from '../useSessionStorage';
 
 function CommuteTimeBar({ getTime }) {
-  const [time, setTimeValue] = useState();
-
+  //const [time, setTimeValue] = useState();
+  const [time, setTimeValue] = useSessionStorage('time', 0);
   useEffect(() => {
     console.log('time: ', time);
     getTime(time);

@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DaumPostCode from 'react-daum-postcode';
 import MapContainer from './MapContainer';
+import { useHistory } from '../../node_modules/react-router-dom/index';
+//import { connect } from 'react-redux';
+//import { getalladdress } from '../redux/alladdress/action'; //action
+import useSessionStorage from '../useSessionStorage';
 
-const SearchPlace = () => {
+const SearchPlace = ({ getalladdress }) => {
   const [address, setAddress] = useState('');
-  const [fullAddress, setFullAddress] = useState('');
+  //const [fullAddress, setFullAddress] = useState('');
   const [isDaumPost, setIsDaumPost] = useState(false);
+  const history = useHistory();
+  const [fullAddress, setFullAddress] = useSessionStorage('fullAddress', '');
+  //useEffect(() => {
+  //console.log('fac: ', checkedInputs);
+  //getalladdress(fullAddress);
+  //}, [fullAddress, setFullAddress]);
 
   const handleOpenPost = () => {
     setIsDaumPost(!isDaumPost);
@@ -26,9 +36,25 @@ const SearchPlace = () => {
       }
       AllAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
     }
-    setAddress(data.zonecode);
-    setFullAddress(AllAddress);
-    setIsDaumPost(false);
+
+    if (
+      !(
+        AllAddress.includes('서울') ||
+        AllAddress.includes('인천') ||
+        AllAddress.includes('경기')
+      )
+    ) {
+      alert('현재 서울•경기•인천만 서비스가 가능해요');
+      setAddress(37.5465770572176, 126.96458430932942);
+      setFullAddress(' 수도권 지역으로 다시 설정해주세요 ');
+      setIsDaumPost(false);
+
+      //history.push('/recommendation');
+    } else {
+      setAddress(data.zonecode);
+      setFullAddress(AllAddress);
+      setIsDaumPost(false);
+    }
   };
 
   // DaumPostCode style
@@ -75,6 +101,7 @@ const SearchPlace = () => {
             <span>주소 찾기</span>
           </button>
         </div>
+
         {isDaumPost ? (
           <DaumPostCode
             onComplete={handleAddress}
@@ -91,5 +118,18 @@ const SearchPlace = () => {
     </div>
   );
 };
+
+/*const mapStateToProps = (state) => {
+  console.log(state, 'state');
+  return {
+    alladdress: state.alladdress,
+  };
+};
+
+const mapDispatchToProps = {
+  getalladdress: (fullAddress) => getalladdress(fullAddress),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPlace);*/
 
 export default SearchPlace;

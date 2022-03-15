@@ -2,10 +2,18 @@ import React, { useEffect } from 'react';
 import './MainPage.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
+import { v4 as uuidv4 } from 'uuid';
 
+import moment from '../../node_modules/moment/moment';
 const MainPage = () => {
   useEffect(() => {
-    API.get('/main').then((res) => console.log(res));
+    //const now = moment().format('YYYY-MM-DD HH:mm:ss');
+    //const rand_0_99 = Math.floor(Math.random() * 100000);
+    const id = uuidv4();
+    console.log('식별자', id);
+    API.post('/main', { userID: id }).then((res) =>
+      console.log('사용자세션: ', res.cookie),
+    );
   }, []);
 
   return (

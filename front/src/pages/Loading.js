@@ -1,13 +1,12 @@
-import Loader from 'react-loader-spinner';
+import Loader from 'react-spinner-loader';
+import { Oval } from 'react-loader-spinner';
 import SpinContainer from 'react-loader-spinner';
 import './Loading.scss';
 
 function Loading() {
   return (
     <div className="load">
-      <SpinContainer>
-        <Loader type="Oval" color="green" height={30} width={30} />
-      </SpinContainer>
+      <Loader type="body" message="Loading Data" />
     </div>
   );
 }

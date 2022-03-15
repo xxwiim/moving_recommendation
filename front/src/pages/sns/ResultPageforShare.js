@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './ResultPage.scss';
-import Location from './Location';
-import Details from './Details';
-import Social from './Social';
+import '../ResultPage.scss';
+import Location from '../Location';
+import Details from '../Details';
+import Social from '../Social';
 import API from '../API';
 import { useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import { getResult } from '../redux/result/actions';
 import { loadChecked } from '../redux/load/actions';
-import Loading from './Loading';
+import Loading from '../Loading';
 import { Container } from 'react-dom';
 
 const ResultPage = ({ getResult, loadChecked }) => {

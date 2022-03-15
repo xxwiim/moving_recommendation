@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { eduChecked } from '../redux/checked/actions'; //action
 import './Education.scss';
+import useSessionStorage from '../useSessionStorage';
 
 const Education = ({ eduChecked }) => {
-  const [checkedInputs, setCheckedInputs] = useState([]);
-
+  //const [checkedInputs, setCheckedInputs] = useState([]);
+  const [checkedInputs, setCheckedInputs] = useSessionStorage(
+    'educheckedInputs',
+    [],
+  );
   useEffect(() => {
     console.log('제발찍혀라', checkedInputs);
     eduChecked(checkedInputs);
@@ -20,7 +24,7 @@ const Education = ({ eduChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
+    <div className="LifeStyleDetails" style={{ fontSize: '10px' }}>
       <input
         id={'초등학교'}
         type="checkbox"

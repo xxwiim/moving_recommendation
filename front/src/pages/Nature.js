@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { natureChecked } from '../redux/checked/actions'; //action
-
+import useSessionStorage from '../useSessionStorage';
 const Nature = ({ natureChecked }) => {
-  const [checkedInputs, setCheckedInputs] = useState([]);
-
+  //const [checkedInputs, setCheckedInputs] = useState([]);
+  const [checkedInputs, setCheckedInputs] = useSessionStorage(
+    'naturecheckedInputs',
+    [],
+  );
   useEffect(() => {
     console.log('nature: ', checkedInputs);
     natureChecked(checkedInputs);
@@ -19,7 +22,7 @@ const Nature = ({ natureChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
+    <div className="LifeStyleDetails" style={{ fontSize: '10px' }}>
       <input
         id={'등산로'}
         type="checkbox"

@@ -5,19 +5,25 @@ import API from '../API';
 import resultReducer from '../redux/result/reducers';
 import { loadChecked } from '../redux/load/actions';
 import Loading from './Loading';
+import useSessionStorage from '../useSessionStorage';
 
 const { kakao } = window;
 
 const Location = ({ loadChecked }) => {
   const location = useSelector((state) => state.location); //직장주소
   const change = useSelector((state) => state.result.res);
+  const [mapforShare, setmapforShare] = useSessionStorage('mapforShare', []);
+
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     API.get('/recommendation/addressformap').then((res) => {
-      //console.log(res.data[0]);
+      setShowMap(true);
       setTempLoc1(res.data[0]);
       setTempLoc2(res.data[1]);
       setTempLoc3(res.data[2]);
+      setmapforShare([location, res.data[0], res.data[1], res.data[2]]);
+      //setShowMap(false);
       //console.log('바뀐뒤 :', tempLoc1);
     });
   }, [change]);
@@ -27,7 +33,6 @@ const Location = ({ loadChecked }) => {
   const [tempLoc3, setTempLoc3] = useState(['임시이름', 37.566092, 126.830395]);
 
   const splitLocation = location['location'].split(',');
-  console.log(splitLocation);
   useEffect(() => {
     var container = document.getElementById('map');
     var options = {

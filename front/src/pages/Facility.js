@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { facChecked } from '../redux/checked/actions'; //action
 import './Facility.scss';
-
+import useSessionStorage from '../useSessionStorage';
 const Facility = ({ facChecked }) => {
-  const [checkedInputs, setCheckedInputs] = useState([]);
+  //const [checkedInputs, setCheckedInputs] = useState([]);
+  const [checkedInputs, setCheckedInputs] = useSessionStorage(
+    'faccheckedInputs',
+    [],
+  );
 
   useEffect(() => {
     console.log('fac: ', checkedInputs);
@@ -20,7 +24,7 @@ const Facility = ({ facChecked }) => {
   };
 
   return (
-    <div className="LifeStyleDetails" style={{fontSize: '10px'}}>
+    <div className="LifeStyleDetails" style={{ fontSize: '10px' }}>
       <input
         id={'영화관'}
         type="checkbox"
